@@ -18,7 +18,10 @@ const BotoesEstilizados = styled.button`
     box-shadow: inset 0.7px 0.5px 17px 5px var(--azulEscuro);
     color: var(--azulEscuro);
     }
+   
 `
+
+
 
 const Botoes = (props) => {
     return(
