@@ -38,8 +38,8 @@ const LinkEstilizado = styled(Link)`
     box-shadow: inset 0.7px 0.5px 17px 5px var(--azulEscuro);
     color: var(--azulEscuro);
     }
-    @media (max-width: 450px){
-     margin:15px;
+    @media (max-width: 360px){
+     margin:10px;
      padding-inline: 1rem;
     }
 
