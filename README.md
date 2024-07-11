@@ -24,6 +24,8 @@ Currently, two official plugins are available:
 
 ![aluraflix2](https://github.com/MaiteFinzi/aluraflix-v7/assets/106894876/6d58b20d-4f51-4dec-b86b-6faec4bbd578)
 
+![aluraflix responsividade](https://github.com/MaiteFinzi/aluraflix-v7/assets/106894876/4af1201c-d171-4de7-a634-719f1af2208c)
+Responsividade para telas de 360 e 768 pixels de largura.
 
 ![aluraflix3](https://github.com/MaiteFinzi/aluraflix-v7/assets/106894876/9a204675-6f1d-4a59-a192-455eab073b72)
 
