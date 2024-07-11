@@ -32,13 +32,18 @@ const LinkEstilizado = styled(Link)`
     font-size: 0.8rem;
     font-weight: 600;
     font-family: var(--fonteNavBotoes);
+    @media (max-width:430px) {
+        margin: 5px;
+
+    }
     &:hover{
     border: 2px solid var(--azulEscuro);
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     box-shadow: inset 0.7px 0.5px 17px 5px var(--azulEscuro);
     color: var(--azulEscuro);
     }
-    @media (max-width: 360px){
+    
+    @media (max-width: 360px) {
      margin:10px;
      padding-inline: 1rem;
     }

@@ -10,6 +10,20 @@ const PlayerContainer = styled.div`
         border-radius:10px;
         position: relative;
         margin-left: 80px;
+        @media (max-width: 360px){
+          width:100vw;
+          margin-left:50px;
+          justify-content:center;
+          top:90px;
+        }
+        @media (max-width: 430px){
+          margin-top: 50%;
+          
+        }
+        @media (max-width: 768px){
+          width:90vw;
+          margin-left:20px;
+        }
     &:hover {
         box-shadow: -10px 10px 60px var(--azulEscuro);
         } }

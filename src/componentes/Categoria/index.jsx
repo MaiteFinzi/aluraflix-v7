@@ -13,8 +13,18 @@ const CategoriaEstilizada = styled.section`
       align-items:start;
       margin-top: 90px;
       margin-bottom: 20px;
-      
-     
+      @media (max-width: 360px){
+        margin-top: 140px;
+        margin-bottom: 0px;
+      }  
+      @media (max-width: 768px){
+        margin-top: 250px;
+        margin-bottom: 5px;
+    }
+    /* @media (max-width: 1024px){
+        margin-top: 200px;
+        margin-bottom:20px;
+    } */
 h2{
     padding: 1rem 1rem;
     border-radius: 15px;
@@ -26,7 +36,9 @@ h2{
     text-align: center;
     background-color: ${props => props.corNome};
     margin-top:20px;
-
+@media (max-width:768px) {
+    margin-left:10px;
+}
 }
 `
 const CaixaCard = styled.div`
@@ -34,7 +46,12 @@ const CaixaCard = styled.div`
     flex-wrap:wrap;
     justify-content:space-evenly;
     gap:25px;
-   
+    @media (max-width: 360px){
+        gap: 40px;
+    }
+    /* @media (max-width: 1024px){
+        gap: 20px;
+    } */
     
 `
 

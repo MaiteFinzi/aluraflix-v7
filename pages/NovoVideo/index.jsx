@@ -39,15 +39,9 @@ import { FormularioContext } from "../../src/contexto/FormularioContext";
 
 
  const NovoVideo = () => {
-  const {videos , setVideos} = useContext(FormularioContext)
+  
+        const {videos , setVideos} = useContext(FormularioContext)
         
-
-        // const aoNovoVideoAdicionado = (novoVideo) => {
-        //    console.log(novoVideo)
-        //     setVideos([...videos, novoVideo])
-        //         console.log(novoVideo)
-       
-        // }
         const aoVideoCadastrado = (novoVideo) => {
           setVideos([...videos, novoVideo]);
         };

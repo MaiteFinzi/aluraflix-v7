@@ -11,11 +11,28 @@ const ContainerBanner = styled.div`
    max-height:120px;
    position: relative;
    margin-top: 14%;
+  
+  
+@media (max-width: 768px){
+   max-height:80px;
+   margin-top: 44%;
+}
+/* @media (max-width: 1024px){
+   max-height:60px;
+   margin-top: 22%;
+} */
 div{
    display: flex;
    flex-direction: row;
    gap:10px;
-   padding:20px;
+   padding:20px; 
+   @media (max-width: 430px)  {
+      padding:0;
+   }
+
+@media (max-width: 768px){
+   flex-direction: column;
+}
 
 }
 header{
@@ -32,6 +49,12 @@ header{
    -moz-box-shadow: inserção -4px 24px 102px 76px rgba(34,13,209,0.41);
     box-shadow: inset -4px 24px 102px 76px rgba(34,113,209,0.41);
    }
+   @media (max-width: 360px){
+      display:none;
+   }
+   @media (max-width: 430px){
+      display: none;
+   }
 }
 h2{
    font-size:2rem;
@@ -45,10 +68,15 @@ const ImagemFundo = styled.div`
    position: relative; /* Posiciona a imagem como absoluta */
    top: 0;
    left: 0;
-          min-width: 100vw;
+   min-width: 100vw;
    background-image: url(${props => props.imagem});
    background-size: cover;
-      
+   @media (max-width: 360px){
+      background-image: none;
+   }   
+   @media (max-width: 430px) {
+      background-image: none;
+   }
    `
 
 const CardBanner = () => {

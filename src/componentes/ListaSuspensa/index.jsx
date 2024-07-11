@@ -16,6 +16,12 @@ const ListaSuspensaEstilizada = styled.select`
     &:hover{
     box-shadow: -10px 10px 60px var(--azulClaro);
     }
+   
+    @media (max-width: 360px) {
+        min-width:80vw;
+        margin-left:10px;
+       
+    }
     `
 
 const ListaSuspensa = (props) => {

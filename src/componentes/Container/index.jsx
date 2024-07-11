@@ -13,7 +13,6 @@ const ConteudoContainer = styled.section`
     color: var(--cinzaClaro);
     padding-block: 1rem;
     
-
     
 `
 

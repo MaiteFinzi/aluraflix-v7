@@ -13,13 +13,15 @@ const FundoModal = styled.div`
     justify-content:center;
     align-items:center;
     position: fixed;
+   
 `
 
 const ModalEstilizado = styled.div`
     position:fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
+   
     
   img{
        width:20px;
@@ -29,7 +31,22 @@ const ModalEstilizado = styled.div`
        position: fixed;
        top:10px;
        left:10px;
-       box-shadow: inset 0.7px 0.5px 17px 5px var(--azulEscuro)
+       box-shadow: inset 0.7px 0.5px 17px 5px var(--azulEscuro);
+       @media (max-width: 360px){
+     
+        left:0px;
+       }
+       @media (max-width: 430px){
+        transform: translateY(100px);
+       }
+       @media (max-width: 768px){
+        top:-210px;
+        left:20px;
+       }
+       /* @media (max-width: 1024px){
+        transform: translateX(150px);
+        top: -80px;
+       } */
        
     }
    
@@ -38,8 +55,20 @@ const ModalEstilizado = styled.div`
         text-align:center;
         margin-top: 20px;
         font-weight:900;
-    }
-    
+        @media (max-width: 360px){
+            margin-top:0;
+        }
+        @media (max-width: 430px) {
+            margin-bottom:10px;
+        }
+        @media (max-width: 768px) {
+            margin-top: -140px;
+           
+        }
+        /* @media (max-width: 1024px){
+            margin-top: -90px;
+    } */
+} 
 `
 
 const FormularioEstilizado = styled.section`
@@ -50,18 +79,57 @@ const FormularioEstilizado = styled.section`
     height: 560px;
     border: 2px solid var(--azulEscuro);
     border-radius:15px;
-    color: var(--azulEscuro);
+    color: var(--azulEscuro); 
+   
+    @media (max-width: 360px){
+        height:620px;
+    }
+    @media (max-width: 430px){
+        padding: 8px;
+    }
+    @media (max-width: 768px) {
+    height: 75vh;
     
+}
+
 form{
 position:relative;
 background-color: rgba(3, 18, 47, 0.76);
 display: block;
+@media (max-width: 360px){
+    width:80vw;
+    height: 65vh;
 }
+/* @media (max-width: 1024px){
+    width:80vw;
+background-color:transparent;
+margin-left:20%;
+margin-bottom:50px;
+} */
+}
+
 input{
     background-color: rgba(3, 18, 47, 0.76);
     border: 2px solid var(--azulEscuro);
-    
+    @media (max-width: 360px){
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction:column;
+    }  
+    @media (max-width: 430px){
+        width:90vw;
+    }
+    @media (max-width: 768px){
+        min-width: 60vw;
+        margin-left:10px;
+    }
+    /* @media (max-width: 1024px){
+        min-width: 40vw;
+        margin-left:20px;
+    } */
 }
+
 `
 
 const BotoesEstilizadosContainer = styled.div`
@@ -69,6 +137,11 @@ const BotoesEstilizadosContainer = styled.div`
     align-items: center;
     justify-content:center;
     gap: 25px;
+    @media (max-width: 360px) {
+       top:480px;
+       position:fixed;
+       margin-left:20px;
+    }
 button{
     color: var(--cinzaEscuro);
     padding-inline: 3rem;
@@ -85,8 +158,10 @@ button{
     box-shadow: inset 0.7px 0.5px 17px 5px var(--azulEscuro);
     color: var(--azulEscuro);
     }
-}    
+    
+}  
 
+ 
 `
 
 const Modal = ({onClose, videoData, aoVideoCadastrado }) => {

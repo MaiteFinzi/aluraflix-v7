@@ -13,6 +13,7 @@ const TextoEstilizado = styled.h1`
     text-align: center;
     padding-block:20px;
     margin-top: 50px;
+   
 h2{
     font-family: var(--fonteNavBotoes);
     font-size: 15px;
@@ -27,16 +28,26 @@ const FormularioEstilizado = styled.section`
     display: flex;
     justify-content: center;
     flex-wrap:wrap;
-    
+   
 form{
     height: 100%;
     width:90vw;
+   
 }
 `
 
 const CampoTextoEstilizados = styled.div`
     display: flex;
     justify-content:space-evenly;
+     @media (max-width: 360px){
+        display: flex;
+        flex-direction:column;      
+        height: 80%;
+        label{
+            margin-left: 10px;
+        }
+    }
+    
 
 `
 const BotoesEstilizadosContainer = styled.div`
