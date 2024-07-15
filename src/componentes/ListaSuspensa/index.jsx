@@ -31,8 +31,12 @@ const ListaSuspensa = (props) => {
 
         <div>
             <label>{props.label}</label>
-            <ListaSuspensaEstilizada  onChange={evento => props.aoAlterado(evento.target.value)} required={props.required} value={props.valor}>
-                {props.itens.map(item => {
+            <ListaSuspensaEstilizada  
+            onChange={evento => props.aoAlterado(evento.target.value)} 
+            required={props.required}
+            value={props.valor}
+            >
+               {props.itens.map((item) => {
                     return <option key={item}>{item}</option>
                 })}
             </ListaSuspensaEstilizada>

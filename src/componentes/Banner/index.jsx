@@ -81,12 +81,19 @@ const ImagemFundo = styled.div`
 
 const CardBanner = () => {
    const { videoSelecionado } = useContext(FormularioContext);
+   
 
    if (!videoSelecionado) {
+      console.log(videoSelecionado)
       return null; // Não renderiza nada se não houver um vídeo selecionado
+       
    }
 
+   
+   console.log(videoSelecionado)
    return (
+
+      
 
       <ContainerBanner id="banner">
          <ImagemFundo imagem={videoSelecionado.imagem} >

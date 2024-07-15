@@ -78,7 +78,7 @@ function Home(props) {
       setCategoria('')
   }
 
-  const { videos, setVideos, showModal, videoSelecionado, fecharModal, setVideoSelecionado } = useContext(FormularioContext);
+  const { videos, setVideos, showModal, videoSelecionado, fecharModal, setVideoSelecionado, aoVideoCadastrado } = useContext(FormularioContext);
 
   console.table(videos)
 
@@ -119,8 +119,9 @@ function Home(props) {
         ))}
         {showModal && (
           <Modal
-            video={videoSelecionado}
+            aoVideoCadastrado={aoVideoCadastrado}
             onClose={fecharModal} // Passa a função para fechar o modal
+            videoData={videoSelecionado} 
           >
 
           </Modal>

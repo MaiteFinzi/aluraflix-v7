@@ -164,44 +164,68 @@ button{
  
 `
 
-const Modal = ({onClose, videoData, aoVideoCadastrado }) => {
+const Modal = ({onClose, videoData, aoVideoCadastrado, required }) => {
+    // const { editarVideo } = useContext(FormularioContext);
 
+    // const [categorias, setCategorias] = useState([
+    //     'FRONT END',
+    //     'BACK END',
+    //     'MOBILE',
+    //   ]);
 
-    const [categorias, setCategorias] = useState([
-        'FRONT END',
-        'BACK END',
-        'MOBILE',
-      ]);
-
-      const [categoriaSelecionada, setCategoriaSelecionada] = useState(
-        videoData?.categoria || ""
-      );
+      // const [categoriaSelecionada, setCategoriaSelecionada] = useState(
+      //   videoData?.categoria || ""
+      // );
       const [titulo, setTitulo] = useState(videoData?.titulo || "");
       const [imagem, setImagem] = useState(videoData?.imagem || "");
       const [video, setVideo] = useState(videoData?.video || "");
       const [descricao, setDescricao] = useState(videoData?.descricao || "");
-      const [categoria, setCategoria] = useState(
-        videoData?.categoria || ""
-      );
+      const [categoria, setCategoria] = useState(videoData?.categoria || "");
       const [url, setUrl] = useState(videoData?.url || "");
     
-
+console.log("video:" , video)
   const handleCategoriaChange = (event) => {
     setCategoriaSelecionada(event.target.value);
   };
 
-   const aoSalvar = (evento) => {
-       evento.preventDefault()
-       aoVideoCadastrado({
-        titulo,
-        imagem,
-        video,
-        descricao,
-        categoria,
-       })
-
-
-     }
+  
+const aoSalvar = async (evento) => {
+    evento.preventDefault();
+    if (videoData) {
+      try {
+        const response = await fetch(
+          `https://myjsonserver.typicode.com/MaiteFinzi/aluraflixapi/videos/${videoData.id}`,
+          {
+            method: 'PUT',
+            headers: {
+              'ContentType': 'application/json',
+            },
+            body: JSON.stringify({
+              titulo,
+              imagem,
+              video,
+              descricao,
+              categoria,
+              url,
+            }),
+          }
+        );
+        if (response.ok) {
+          const updatedVideo = await response.json(); // Processa a resposta como JSON
+          // Atualizar o estado do contexto com o vídeo atualizado
+          // ...
+          onClose(); // Fechar o modal
+        } else {
+          console.error('Erro ao editar vídeo:', response.status);
+        }
+      } catch (error) {
+        console.error('Erro ao editar vídeo:', error);
+      }
+    } else {
+      console.error('Nenhum vídeo selecionado para edição.');
+    }
+  };
+  
 
 
      const limparFormulario = () => {
@@ -214,11 +238,11 @@ const Modal = ({onClose, videoData, aoVideoCadastrado }) => {
 
      const { fecharModal } = useContext(FormularioContext)
     
+  
+
     return (
 
          <FundoModal>  
-           
-             
              <FormularioEstilizado > 
                 <ModalEstilizado> 
                 <h3>EDITAR CARD</h3>
@@ -234,14 +258,14 @@ const Modal = ({onClose, videoData, aoVideoCadastrado }) => {
             <form>  
                 <div>
                     <CampoTexto 
-                    obrigatorio={true} 
+                    required={required} 
                     label="Titulo" 
                     placeholder="Digite o título do vídeo" 
                     valor={titulo}
                     aoAlterado={valor => setTitulo(valor)}
                     />
                     <CampoTexto 
-                    obrigatorio={true} 
+                    required={required} 
                     label="Imagem" 
                     placeholder="Digite o link da imagem do vídeo"
                     valor={imagem}
@@ -250,7 +274,7 @@ const Modal = ({onClose, videoData, aoVideoCadastrado }) => {
                 </div>
                 <div>
                     <ListaSuspensaModalComponent
-                     obrigatorio={true} 
+                     required={required} 
                      label="Categoria" 
                      placeholder="Escolha uma categoria" 
                      valor={categoria}
@@ -259,14 +283,14 @@ const Modal = ({onClose, videoData, aoVideoCadastrado }) => {
                 </div>
                 <div>
                     <CampoTexto 
-                    obrigatorio={true} 
+                    required={required} 
                     label="Vídeo" 
                     placeholder="Digite o link do vídeo" 
                     valor={video}
                     aoAlterado={valor => setVideo(valor)}
                     />
                     <CampoTexto 
-                    obrigatorio={true} 
+                    required={required} 
                     label="Descrição" 
                     placeholder="Sobre o que é esse vídeo?" 
                     valor={descricao}
@@ -305,22 +329,5 @@ export default Modal
 
 
 
-// import styled from "styled-components";
-// import React, { useState } from "react";
 
-
-
-
-
-// const ModalEditar = ({ props, showModal, onClose, onSave, video }) => {
-// //     console.log(props)
-
-     
-//     return(
-        
-
-//     )
-// }
-
-// export default ModalEditar;
 

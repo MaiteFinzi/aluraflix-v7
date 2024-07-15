@@ -82,17 +82,22 @@ const Formulario = ( props) => {
     const [titulo, setTitulo] = useState('')
     const [imagem, setImagem] = useState('')
     const [video, setVideo] = useState('')
+    const [url, setUrl] = useState('')
+    const [id, setId] = useState('')
     const [descricao, setDescricao] = useState('')
     const [categoria, setCategoria] = useState('')
 
-
+  
     
-   const aoSalvar = (evento) => {
+   const aoSalvarNovoVideo = (evento) => {
+    console.table(categoria)
        evento.preventDefault()
      const novoVideo ={
         titulo:titulo,
         imagem:imagem,
         video:video,
+        url:url,
+        id:id,    
         descricao:descricao,
         categoria:categoria
      }
@@ -106,6 +111,8 @@ const Formulario = ( props) => {
         setTitulo(''),
         setImagem(''),
         setVideo(''),
+        setUrl(''),
+        setId(''),
         setDescricao(''),
         setCategoria('')
      }
@@ -113,7 +120,7 @@ const Formulario = ( props) => {
 
     return (
         <FormularioEstilizado >
-            <form onSubmit={aoSalvar}>  
+            <form onSubmit={aoSalvarNovoVideo}>  
                 <TextoEstilizado>
                     <header>
                     <h1>NOVO VÍDEO</h1>
@@ -141,8 +148,8 @@ const Formulario = ( props) => {
                     obrigatorio={true} 
                     label="Vídeo" 
                     placeholder="Digite o link do vídeo" 
-                    valor={video}
-                    aoAlterado={valor => setVideo(valor)}
+                    valor={url}
+                    aoAlterado={valor => setUrl(valor)}
                     />
                     <CampoTexto 
                     obrigatorio={true} 
@@ -156,14 +163,21 @@ const Formulario = ( props) => {
                     <ListaSuspensa 
                     obrigatorio={true} 
                     label="Categorias" 
-                    itens={props.categorias} 
+                    itens={props.categorias}
                     valor={categoria}
-                    aoAlterado={valor => setCategoria(valor)}
+                    aoAlterado={setCategoria}
+                    />
+                    <CampoTexto 
+                    obrigatorio={true} 
+                    label="Id" 
+                    placeholder="Digite o Id do video" 
+                    valor={id}
+                    aoAlterado={valor => setId(valor)}
                     />
                 </ CampoTextoEstilizados>
             </form>
                 <BotoesEstilizadosContainer >
-                    <button type="submit" onClick={aoSalvar}>GUARDAR</button> 
+                    <button type="submit" onClick={aoSalvarNovoVideo}>GUARDAR</button> 
                     <button type="button" onClick={limparFormulario}>LIMPAR</button>
                 </BotoesEstilizadosContainer>
         </FormularioEstilizado >
@@ -172,5 +186,6 @@ const Formulario = ( props) => {
 }
 
 export default Formulario;
+
 
 

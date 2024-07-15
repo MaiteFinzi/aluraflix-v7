@@ -44,7 +44,7 @@ export const FormularioProvider = ({ children }) => {
   const aoVideoCadastrado = (novoVideo) => {
     const id = uuidv4()
     const videoComId = {...novoVideo, id}
-    setVideos([...videos, novoVideo]);
+    setVideos([...videos, videoComId]);//mudei aqui
     localStorage.setItem('videos', JSON.stringify([...videos, videoComId])); // Salva os vídeos no localStorage
 };
 
@@ -57,6 +57,17 @@ export const FormularioProvider = ({ children }) => {
     setShowModal(false); // Fecha o modal
   };
 
+  
+  const editarVideo = async (id) => {
+    try {
+      const response = await fetch('https://my-json-server.typicode.com/MaiteFinzi/aluraflix-api/videos/${videoData.id}'); 
+      const data = await response.json();
+      setVideo(data); // Atualiza o estado do modal com os dados do vídeo
+    } catch (error) {
+      console.error('Erro ao editar vídeo:', error);
+    }
+  }; 
+
   return (
     <FormularioContext.Provider  value={{ 
         videos, 
@@ -68,7 +79,8 @@ export const FormularioProvider = ({ children }) => {
         fecharModal,
         abrirVideoNoBanner, 
         aoVideoCadastrado,
-        adicionarVideo 
+        adicionarVideo ,
+        editarVideo
         }} >
       {children}
     </FormularioContext.Provider>

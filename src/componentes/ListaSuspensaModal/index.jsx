@@ -34,14 +34,16 @@ display: flex;
     } */
     `
 
-const ListaSuspensaModalComponent = ({ label, ...props }) => {
+const ListaSuspensaModalComponent = ({ label, value, aoAlterado, ...props }) => {
  
+    console.log("Props recebidos:", label, value, aoAlterado, props)
+
     const [categorias, setCategorias] = useState([
         'FRONT END',
         'BACK END',
         'MOBILE',
       ]);
- 
+      console.log("Valor do select:", props.value); 
  
     return (
         <div>
@@ -49,7 +51,11 @@ const ListaSuspensaModalComponent = ({ label, ...props }) => {
 
       <label htmlFor="categoria">{props.label}</label>
 
-      <select id="categoria" {...props} />
+      <select 
+      id="categoria" 
+      value={value} // Definindo o valor do select com o valor do estado
+      onChange={(event) => aoAlterado(event.target.value)} // Atualizando o estado quando o valor muda
+      {...props} />
       <option value="">Selecione uma categoria:</option>
                             {categorias.map((categoria) => (
                         <option key={categoria} value={categoria}>
