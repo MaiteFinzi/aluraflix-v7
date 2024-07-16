@@ -6,6 +6,7 @@ import { FormularioContext } from "../../contexto/FormularioContext";
 import ListaSuspensaModalComponent from "../ListaSuspensaModal";
 
 
+
 const FundoModal = styled.div`
     background-color: rgba(3, 18, 47, 0.76);
     border-radius:15px;
@@ -33,8 +34,8 @@ const ModalEstilizado = styled.div`
        left:10px;
        box-shadow: inset 0.7px 0.5px 17px 5px var(--azulEscuro);
        @media (max-width: 360px){
-     
-        left:0px;
+        transform: translateY(-100px)
+        
        }
        @media (max-width: 430px){
         transform: translateY(100px);
@@ -182,8 +183,8 @@ const Modal = ({onClose, videoData, aoVideoCadastrado, required }) => {
       const [descricao, setDescricao] = useState(videoData?.descricao || "");
       const [categoria, setCategoria] = useState(videoData?.categoria || "");
       const [url, setUrl] = useState(videoData?.url || "");
-    
-console.log("video:" , video)
+      const [id, setId] = useState(videoData?.id || "")
+console.log("video:" , videoData)
   const handleCategoriaChange = (event) => {
     setCategoriaSelecionada(event.target.value);
   };
@@ -194,8 +195,9 @@ const aoSalvar = async (evento) => {
     if (videoData) {
       try {
         const response = await fetch(
-          `https://myjsonserver.typicode.com/MaiteFinzi/aluraflixapi/videos/${videoData.id}`,
-          {
+          `https://my-json-server.typicode.com/MaiteFinzi/aluraflix-api/videos/${videoData.id}`,
+
+           {
             method: 'PUT',
             headers: {
               'ContentType': 'application/json',
@@ -211,7 +213,28 @@ const aoSalvar = async (evento) => {
           }
         );
         if (response.ok) {
-          const updatedVideo = await response.json(); // Processa a resposta como JSON
+          console.log(titulo)
+          console.log(id)
+          // const updatedVideo = await response.json(); // Processa a resposta como JSON
+          try {
+            // const response = await fetch('https://my-json-server.typicode.com/MaiteFinzi/aluraflix-api/videos/${videoData.id}'); 
+            // const data = await response.json();
+            // setTitulo(titulo); // Atualiza o estado do modal com os dados do vídeo
+
+            // Salvar os vídeos atualizados no localStorage
+            // Obter os vídeos existentes do localStorage
+            
+             const videosExistentes = JSON.parse(localStorage.getItem('videos')) || [];
+
+            
+            // Salvar os vídeos atualizados no localStorage
+            localStorage.setItem('videos', JSON.stringify(videoData));
+
+
+          } catch (error) {
+            console.error('Erro ao editar vídeo:', error);
+          }
+          // const editarVideo = await response.json();
           // Atualizar o estado do contexto com o vídeo atualizado
           // ...
           onClose(); // Fechar o modal
@@ -238,7 +261,7 @@ const aoSalvar = async (evento) => {
 
      const { fecharModal } = useContext(FormularioContext)
     
-  
+     console.log('Editar', categoria)
 
     return (
 
@@ -278,16 +301,17 @@ const aoSalvar = async (evento) => {
                      label="Categoria" 
                      placeholder="Escolha uma categoria" 
                      valor={categoria}
-                     aoAlterado={valor => setCategoria(valor)}
+                    //  aoAlterado={valor => setCategoria(valor)}
+                    aoAlterado={setCategoria}
                     />
                 </div>
                 <div>
-                    <CampoTexto 
-                    required={required} 
+                <CampoTexto 
+                    obrigatorio={true} 
                     label="Vídeo" 
                     placeholder="Digite o link do vídeo" 
-                    valor={video}
-                    aoAlterado={valor => setVideo(valor)}
+                    valor={url}
+                    aoAlterado={valor => setUrl(valor)}
                     />
                     <CampoTexto 
                     required={required} 
@@ -296,6 +320,13 @@ const aoSalvar = async (evento) => {
                     valor={descricao}
                     aoAlterado={valor => setDescricao(valor)}
                     />
+                     {/* <CampoTexto 
+                    obrigatorio={true} 
+                    label="Id" 
+                    placeholder="Digite o Id do video" 
+                    valor={id}
+                    aoAlterado={valor => setId(valor)}
+                    /> */}
                 </div>
                 
             </form>

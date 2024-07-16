@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+
 const ListaSuspensaModal = styled.select`
     
 
@@ -56,11 +57,13 @@ const ListaSuspensaModalComponent = ({ label, value, aoAlterado, ...props }) => 
       value={value} // Definindo o valor do select com o valor do estado
       onChange={(event) => aoAlterado(event.target.value)} // Atualizando o estado quando o valor muda
       {...props} />
-      <option value="">Selecione uma categoria:</option>
+      
                             {categorias.map((categoria) => (
+                        
                         <option key={categoria} value={categoria}>
                             {categoria}
                         </option>
+
                             ))}
        </ListaSuspensaModal>
     </div>

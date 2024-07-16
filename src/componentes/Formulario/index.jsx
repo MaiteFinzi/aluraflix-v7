@@ -116,7 +116,8 @@ const Formulario = ( props) => {
         setDescricao(''),
         setCategoria('')
      }
-
+ 
+    
 
     return (
         <FormularioEstilizado >
